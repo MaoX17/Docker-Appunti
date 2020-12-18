@@ -2,6 +2,7 @@
 
 Backup:
 
+
   docker run --rm -v /path/to/dokuwiki-backups:/backups --volumes-from dokuwiki busybox \
     cp -a /bitnami/dokuwiki /backups/latest
 
