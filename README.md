@@ -35,7 +35,7 @@ Segui ESATTAMENTE i passaggi che riporto.
 
 1.) Creo il mio docker-compose.yml
 
-
+```
   version: '3.1'
   services:
     wordpress:
@@ -78,39 +78,40 @@ Segui ESATTAMENTE i passaggi che riporto.
         name: nginx-proxy
     www.maurizio.proietti.name-net:
 
+```
 
 Lancio il docker-compose up -d
 
-<code>
+```
 docker-compose up -d
-</code>
+```
 
 Entro nel sito e completo l’installazione con dati casuali
 
 Poi faccio un rsync della SOLA directory wp-content:
 
-<code>
+```
 rsync -uazv /var/www/maurizioproietti/wp/wp-content data/html/
-</code>  
+``` 
 
 Poi eseguo il dump del vecchio DB:
 
-<code>
+```
 mysqldump --opt maurizioproietti > dump.sql
-</code>  
+```
 
 E controllo che la prefix delle tabelle sia wp_
 
 Se non lo fosse sostituisco la prefix che ha il dump con wp_
 
 Poi importo il dump nel nuovo db sotto docker:
-<code>
+```
 cat dump.sql | docker exec -i mysql_www.maurizio.proietti.name /usr/bin/mysql -u root --password=secret123 db
-</code>  
+```
 Imposto i permessi sul filesystem per bene oppure (se ho fretta)
-<code>
+```
 chmod -R 777 data
-</code>  
+```
 Entro nella sezione wp-admin e inizio gli aggiornamenti suggeriti nel seguente ordine (che penso possa variare la per scaramanzia non vario 🙂 )
 
 1.) Plugins
