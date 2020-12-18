@@ -1,10 +1,10 @@
 # Docker-Appunti
 
 Backup:
-<code>
-docker run --rm -v /path/to/dokuwiki-backups:/backups --volumes-from dokuwiki busybox \
-  cp -a /bitnami/dokuwiki /backups/latest
-</code> 
+
+  docker run --rm -v /path/to/dokuwiki-backups:/backups --volumes-from dokuwiki busybox \
+    cp -a /bitnami/dokuwiki /backups/latest
+
 
 Step 2: Run the backup command
 We need to mount two volumes in a container we will use to create the backup: a directory on your host to store the backup in, and the volumes from the container we just stopped so we can access the data.
