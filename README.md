@@ -27,7 +27,6 @@ Restoring a backup is as simple as mounting the backup as volumes in the contain
 
 
 
-
 # Dockerizzare un wordpress esistente
 
 Ho avuto qualche difficoltà ma poi ho trovato la via giusta.
@@ -36,50 +35,49 @@ Segui ESATTAMENTE i passaggi che riporto.
 
 1.) Creo il mio docker-compose.yml
 
-<code>
-version: '3.1'
-services:
-  wordpress:
-    image: wordpress
-    restart: always
-    container_name: wp_www.maurizio.proietti.name
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: user
-      WORDPRESS_DB_PASSWORD: password123
-      WORDPRESS_DB_NAME: db
-      VIRTUAL_HOST: www.maurizio.proietti.name
-      VIRTUAL_PORT: 80
-      LETSENCRYPT_HOST: www.maurizio.proietti.name
-      LETSENCRYPT_EMAIL: maurizio.proietti@gmail.com
-    depends_on:
-      - db
-    restart: unless-stopped
-    networks:
-      - proxy
-      - www.maurizio.proietti.name-net
-    volumes:
-      - ./data/html:/var/www/html
-  db:
-    container_name: mysql_www.maurizio.proietti.name
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password123
-      MYSQL_ROOT_PASSWORD: secret123
-    volumes:
-      - ./data/mysql:/var/lib/mysql
-    networks:
-      - www.maurizio.proietti.name-net
-networks:
-  proxy:
-    external:
-      name: nginx-proxy
-  www.maurizio.proietti.name-net:
 
-</code>
+  version: '3.1'
+  services:
+    wordpress:
+      image: wordpress
+      restart: always
+      container_name: wp_www.maurizio.proietti.name
+      environment:
+        WORDPRESS_DB_HOST: db
+        WORDPRESS_DB_USER: user
+        WORDPRESS_DB_PASSWORD: password123
+        WORDPRESS_DB_NAME: db
+        VIRTUAL_HOST: www.maurizio.proietti.name
+        VIRTUAL_PORT: 80
+        LETSENCRYPT_HOST: www.maurizio.proietti.name
+        LETSENCRYPT_EMAIL: maurizio.proietti@gmail.com
+      depends_on:
+        - db
+      restart: unless-stopped
+      networks:
+        - proxy
+        - www.maurizio.proietti.name-net
+      volumes:
+        - ./data/html:/var/www/html
+    db:
+      container_name: mysql_www.maurizio.proietti.name
+      image: mysql:5.7
+      restart: always
+      environment:
+        MYSQL_DATABASE: db
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password123
+        MYSQL_ROOT_PASSWORD: secret123
+      volumes:
+        - ./data/mysql:/var/lib/mysql
+      networks:
+        - www.maurizio.proietti.name-net
+  networks:
+    proxy:
+      external:
+        name: nginx-proxy
+    www.maurizio.proietti.name-net:
+
 
 Lancio il docker-compose up -d
 
