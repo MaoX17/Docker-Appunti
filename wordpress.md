@@ -19,11 +19,8 @@ Questa versione è valida sia con traefik che con nginx di jwilder come reverse 
 
 Adesso iniziamo
 
-# Quick Install
-
 # Quick Install ... la versione rapida
 
-![GreMaPro](https://www.maurizio.proietti.name/wp-content/uploads/2020/12/cropped-gremapro_small.gif)
 
 ```
 mkdir -p /opt/docker
@@ -91,6 +88,8 @@ docker-compose up -d
 
 ```
 
+# Spiegone
+
 Di seguito ci sono i passaggi per ralizzare il tutto da zero...
 
 
@@ -98,7 +97,7 @@ Di seguito ci sono i passaggi per ralizzare il tutto da zero...
 Partiamo dal traefik
 
 
-# Traefik
+## Traefik
 
 Primo comando:
 
