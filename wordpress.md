@@ -224,7 +224,7 @@ e faccio login
 ## WordPress
 
 
-Per usare il docker-compose occorre creare prima di tutto un file .env esempio [env.example](wp05/env.example)
+Per usare il docker-compose occorre creare prima di tutto un file .env
 
 Di seguito un esempio:
 
